@@ -17,15 +17,15 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
 
 
-power_app = Flask(__name__)
+app = Flask(__name__)
 
 
-@power_app.route('/')
+@app.route('/')
 def home():
     return render_template('power_home.html')
 
 
-@power_app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     xls = pd.ExcelFile(r"C:\Users\shvpr\Documents\Folds5x2_pp.xlsx")
     print(xls.sheet_names)
@@ -72,7 +72,7 @@ def predict():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     # app.run(host='0.0.0.0', port=8080, use_reloader=False)
-    power_app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
+    app.run(host='0.0.0.0', port=port, debug=True)
 
 # if __name__ == '__main__':
     # app.run(debug=True, use_reloader=False)
