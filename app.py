@@ -27,10 +27,10 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    xls = pd.ExcelFile(r"C:\Users\shvpr\Documents\Folds5x2_pp.xlsx")
+    xls = pd.ExcelFile("./data/Folds5x2_pp.xlsx")
     print(xls.sheet_names)
 
-    df = pd.read_excel(r"C:\Users\shvpr\Documents\Folds5x2_pp.xlsx",
+    df = pd.read_excel("./data/Folds5x2_pp.xlsx",
                        sheet_name='Sheet1')
 
     X = df.drop('PE', axis=1)
