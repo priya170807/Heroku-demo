@@ -7,6 +7,7 @@ Created on Tue Jun  2 21:19:59 2020
 
 
 from flask import Flask, render_template, url_for, request
+import os
 import pandas as pd
 import numpy as np
 from sklearn.pipeline import Pipeline
@@ -69,8 +70,9 @@ def predict():
 
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
     # app.run(host='0.0.0.0', port=8080, use_reloader=False)
-    power_app.run(debug=True, use_reloader=False)
+    power_app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
 
 # if __name__ == '__main__':
     # app.run(debug=True, use_reloader=False)
