@@ -13,7 +13,7 @@ import pickle
 import gzip
 
 app = Flask(__name__)
-f = gzip.open(r'C:\Users\shvpr\Downloads\model\model.pklz', 'rb')
+f = gzip.open('./model/model.pklz', 'rb')
 model = pickle.load(f)
 f.close()
 
