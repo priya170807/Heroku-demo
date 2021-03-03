@@ -15,10 +15,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
+import boto3
 
 
 app = Flask(__name__)
-
+boto3.setup_default_session(profile_name='USER1')
+client = boto3.client('s3')
 
 @app.route('/')
 def home():
@@ -27,10 +29,10 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    xls = pd.ExcelFile(r"C:\Users\shvpr\Documents\Folds5x2_pp.xlsx")
+    xls = pd.ExcelFile("../data/Folds5x2_pp.xlsx")
     print(xls.sheet_names)
 
-    df = pd.read_excel(r"C:\Users\shvpr\Documents\Folds5x2_pp.xlsx",
+    df = pd.read_excel(r"../data/Folds5x2_pp.xlsx",
                        sheet_name='Sheet1')
 
     X = df.drop('PE', axis=1)
