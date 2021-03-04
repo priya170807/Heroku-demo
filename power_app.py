@@ -53,7 +53,12 @@ def predict():
     grid_search = GridSearchCV(forest_reg, param_grid=param_grid, cv=5,
                                scoring='neg_mean_squared_error')
     grid_search.fit(X_train, y_train)
-
+    
+    # predictions on the X_test
+    y_predictions = grid_search.predict(X_test)
+    # Calculate the loss metric
+    mse = grid_search.score(y_predictions, y_test)
+    print("The R-square value is {}".format(mse))
     # Alternative Usage of Saved Model
     # joblib.dump(clf, 'NB_spam_model.pkl')
     # NB_spam_model = open('NB_spam_model.pkl','rb')
