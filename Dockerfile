@@ -9,9 +9,8 @@ WORKDIR /deploy/
 
 #Upgrade pip3 library
 # RUN pip3 install --upgrade pip
-RUN pip install -r requirements.txt
-
 COPY . /deploy/
+RUN pip install -r requirements.txt
 # COPY ./requirements.txt /deploy/
 # COPY ./iris_trained_model.pkl /deploy/
 
