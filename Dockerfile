@@ -1,15 +1,15 @@
-FROM ubuntu:16.04
+FROM python:3.8-slim
 
 LABEL maintainer shvprkatta@gmail.com
-RUN apt-get update -y && \
-    apt-get install -y python3-pip python3-dev
+# RUN apt-get update -y && \
+#     apt-get install -y python3-pip python3-dev
 
 
 WORKDIR /deploy/
 
 #Upgrade pip3 library
 # RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . /deploy/
 # COPY ./requirements.txt /deploy/
